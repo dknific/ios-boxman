@@ -15,13 +15,14 @@ struct ARExperienceView: View {
                     Button(action: { dismiss() }) {
                         Image(systemName: "chevron.left.circle.fill")
                             .font(.system(size: 36))
-                            .padding(.leading, 32)
-                            .padding(.bottom, 12)
+                            .foregroundStyle(.white)
+                            .padding(.leading, 21)
+                            .padding(.top, 12)
+                            .padding(.bottom, 7)
                     }
                     
                     Spacer()
                 }
-                
             }
         }
         .toolbar(.hidden)

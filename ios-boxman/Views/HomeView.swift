@@ -13,16 +13,16 @@ struct HomeView: View {
                         .font(.system(size: 74))
                         .bold()
                     
-                    Text("\"Watch him go...\"")
-                        .font(.system(size: 39))
+                    Text("An AR Experience")
+                        .font(.system(size: 35))
                         .italic()
                 }
-                .padding(.top, 81)
+                .foregroundStyle(.white)
+                .padding(.bottom, 45)
                 
-                Spacer()
                 
                 NavigationLink(destination: ARExperienceView()) {
-                    Text("Make Him Dance")
+                    Text("Start")
                         .font(.system(size:21))
                         .padding()
                         .padding(.horizontal, 12)
@@ -37,8 +37,8 @@ struct HomeView: View {
             .background(
                 LinearGradient(
                     colors: [
-                        .gray,
-                        .white
+                        Color(red: 0.15, green: 0.15, blue: 0.25),
+                        .black
                     ],
                     startPoint: .topLeading,
                     endPoint: .bottomTrailing
@@ -46,7 +46,6 @@ struct HomeView: View {
             )
             .ignoresSafeArea(.all)
         }
-        
     }
 }
 
