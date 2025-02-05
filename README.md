@@ -1,2 +1,2 @@
 # ios-boxman
-An Augmented Reality iPhone app built with Apple's SwiftUI and RealityKit.
+An Augmented Reality app for iPhone, built using Apple's `RealityKit` and `SwiftUI` framework.
