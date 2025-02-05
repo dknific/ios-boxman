@@ -1,13 +1,30 @@
 import SwiftUI
+import ARKit
 import RealityKit
 
 struct ARExperienceView: View {
+    @Environment(\.dismiss) private var dismiss
+
     var body: some View {
-        NavigationStack {
-            ZStack {
-                RealityKitScene().edgesIgnoringSafeArea(.all)
+        ZStack {
+            RealityKitScene().edgesIgnoringSafeArea(.all)
+            
+            VStack {
+                Spacer()
+                HStack {
+                    Button(action: { dismiss() }) {
+                        Image(systemName: "chevron.left.circle.fill")
+                            .font(.system(size: 36))
+                            .padding(.leading, 32)
+                            .padding(.bottom, 12)
+                    }
+                    
+                    Spacer()
+                }
+                
             }
         }
+        .toolbar(.hidden)
     }
 }
 
@@ -16,14 +33,18 @@ struct RealityKitScene: UIViewRepresentable {
 
     func makeUIView(context: Context) -> ARView {
         let arView = ARView(frame: .zero)
-        let model = try! Entity.load(named: "breakdance")
+        let configuration = ARWorldTrackingConfiguration()
+        configuration.planeDetection = [.horizontal]
+        arView.session.run(configuration)
+        
+        let model = try! Entity.load(named: "boxman")
 
         // Plane tracking
         let anchor: AnchorEntity = AnchorEntity(
             .plane(
                 .horizontal,
                 classification: .any,
-                minimumBounds: SIMD2<Float>(0.2, 0.2)
+                minimumBounds: SIMD2<Float>(0.1, 0.1)
             )
         )
         anchor.children.append(model)
